@@ -8,7 +8,6 @@ import (
 
 // Rewrite rewrites the statements such that RANDOM is rewritten,
 // if r is true.
-func Rewrite(stmts []*Statement, r bool) error {
 	if !r {
 		return nil
 	}
@@ -21,7 +20,6 @@ func Rewrite(stmts []*Statement, r bool) error {
 		// Only replace the incoming statement with a rewritten version if
 		// there was no error, or if the rewriter did anything. If the statement
 		// is bad SQLite syntax, let SQLite deal with it -- and let its error
-		// be returned. Those errors will probably be clearer.
 		s, err := sql.NewParser(strings.NewReader(stmts[i].Sql)).ParseStatement()
 		if err != nil {
 			continue
